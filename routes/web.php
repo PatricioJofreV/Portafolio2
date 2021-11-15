@@ -1,8 +1,12 @@
 <?php
 
+use App\Mail\ContactanosMailable;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsuarioController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactanosController;
+use App\Http\Controllers\InvertarioController;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,15 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class)->name('home');
-
-Route::get('usuario', [UsuarioController::class, 'index'])->name('usuarios.index');
-
-Route::post('usuario', [UsuarioController::class, 'create'])->name('usuarios.create');
-
-Route::get('usuario/registro', [UsuarioController::class, 'registro'])->name('usuarios.registro');
-
-Route::get('usuario/{usuario}', [UsuarioController::class, 'perfil'])->name('usuarios.perfil');
-
-Route::put('usuario/{usuario}', [UsuarioController::class, 'update'])->name('usuarios.update');
-
-Route::get('usuario/{usuario}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit');
+Route::resource('usuarios', UsuarioController::class);
+Route::resource('inventarios', InvertarioController::class);
+Route::view('nosotros', 'nosotros')->name('nosotros');
+Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
+Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');

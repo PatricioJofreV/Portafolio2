@@ -14,37 +14,47 @@ class UsuarioController extends Controller
         $usuarios = Usuario::all();
         return view('usuarios.index', compact('usuarios'));
     }
-    public function create(Request $request)
+    
+    public function create()
+    {
+        return view('usuarios.create');
+    }
+
+    public function store(Request $request)
     {
         $request->validate([
             'nombre' => 'Required',
+            'rut' => 'Required',
             'correo' => 'Required',
             'contrasena' => 'Required',
             'confirmarContrasena' => 'Required'
         ]);
 
-        $usuario = new Usuario();
-        $usuario->nombre = $request->nombre;
-        $usuario->correo = $request->correo;
-        $usuario->contraseña = $request->contrasena;
+        $usuario = Usuario::create([
+            'nombre' => $request->nombre,
+            'rut' => $request->rut,
+            'correo' => $request->correo,
+            'contraseña' => $request->contrasena,
+            'id_rol' => $request->rol,
+            'verificado' => 0
+        ]);
 
-        $usuario->save();
+        return redirect()->route('usuarios.index');
+    }
 
-        return redirect()->route('usuarios.perfil', $usuario);
-    }
-    public function perfil(Usuario $usuario)
+    public function show(Usuario $usuario)
     {
-        return view('usuarios.perfil', compact('usuario'));
+        return view('usuarios.show', compact('usuario'));
     }
-    public function registro()
-    {
-        return view('usuarios.registro');
-    }
+
     public function update(Request $request, Usuario $usuario)
     {
         $request->validate([
             'nombre' => 'Required',
+            'rut' => 'Required',
+            'rol' => 'Required',
             'correo' => 'Required',
+            'verificado' => 'Required',
             'contrasena' => 'Required',
             'confirmarContrasena' => 'Required'
         ]);
@@ -54,11 +64,12 @@ class UsuarioController extends Controller
         if ($request->nuevaContrasena) {
             $usuario->contraseña = $request->nuevaContrasena;
         }
-        $usuario->id_roll = $request->rol;
+        $usuario->id_rol = $request->rol;
 
         $usuario->save();
-        return redirect()->route('usuarios.perfil', $usuario);
+        return redirect()->route('usuarios.show', $usuario);
     }
+
     public function edit(Usuario $usuario)
     {
         return view('usuarios.edit', compact('usuario'));

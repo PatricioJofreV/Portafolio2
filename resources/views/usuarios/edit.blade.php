@@ -19,6 +19,28 @@
         @enderror
 
         <label>
+            Rut:
+            <br>
+            <input type="text" name="rut" value="{{old('rut', $usuario->rut)}}">
+        </label>
+        <br>
+        @error('rut')
+            <small>{{$message}}</small>
+            <br>
+        @enderror
+
+        <label>
+            Rol:
+            <br>
+            <input type="text" name="rol" value="{{old('rol', $usuario->id_rol)}}">
+        </label>
+        <br>
+        @error('rol')
+            <small>{{$message}}</small>
+            <br>
+        @enderror
+
+        <label>
             Correo:
             <br>
             <input type="email" name="correo" value="{{old('correo', $usuario->correo)}}">
@@ -30,16 +52,16 @@
         @enderror
 
         <label>
-            Rol:
+            Verificado:
             <br>
-            <input type="text" name="rol" value="{{old('rol', $usuario->id_roll)}}">
+            <input type="text" name="verificado" value="{{old('verificado', $usuario->verificado)}}">
         </label>
         <br>
-        @error('rol')
+        @error('verificado')
             <small>{{$message}}</small>
             <br>
         @enderror
-
+        
         <label>
             Nueva contraseña:
             <br>
@@ -75,5 +97,7 @@
 
         <button type="submit">Actualizar</button>
     </form>
+    <a href="{{ route('usuarios.index') }}">Volver a usuario</a>
+    <a href="{{ route('usuarios.show', $usuario->id) }}">Volver a usuario</a>
 
 @endsection

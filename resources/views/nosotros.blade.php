@@ -1,7 +1,7 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Home')
+@section('title', 'Nosotros')
 
 @section('body')
-    <h1>Página principal</h1>
+    <h1>Nosotros</h1>
 @endsection

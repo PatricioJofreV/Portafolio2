@@ -1,9 +1,11 @@
 @extends('layouts.plantilla')
+
 @section('title','Registro')
+
 @section('body')
     <h1>Registro</h1>
 
-    <form action="{{route('usuarios.create')}}" method="POST">
+    <form action="{{route('usuarios.store')}}" method="POST">
         @csrf
         <label>
             Nombre:
@@ -12,6 +14,17 @@
         </label>
         <br>
         @error('nombre')
+            <small>{{$message}}</small>
+            <br>
+        @enderror
+
+        <label>
+            Rut:
+            <br>
+            <input type="text" name="rut" value="{{old("rut")}}">
+        </label>
+        <br>
+        @error('rut')
             <small>{{$message}}</small>
             <br>
         @enderror
@@ -50,6 +63,8 @@
         <br>
          
         <button type="submit">Enviar</button>
+        
     </form>
+    <a href="{{ route('usuarios.index') }}">Volver a usuarios</a>
 
 @endsection

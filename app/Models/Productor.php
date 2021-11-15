@@ -5,23 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Usuario extends Model
+class Productor extends Model
 {
     use HasFactory;
-
-    protected $table = 'USUARIO';
+    
+    protected $table = 'PRODUCTOR';
 
     /**
      * The attributes that are mass assignable.
      * @var string[]
      */
     protected $fillable = [
-        'nombre',
-        'rut',
-        'correo',
-        'contraseña',
-        'id_rol',
-        'verificado'
+        'id',
+        'calidad',
+        'vigencia',
+        'fecha_finv'
     ];
 
     public $timestamps = false;
