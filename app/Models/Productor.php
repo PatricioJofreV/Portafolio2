@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Productor extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'PRODUCTOR';
 
     /**
@@ -16,10 +16,8 @@ class Productor extends Model
      * @var string[]
      */
     protected $fillable = [
-        'id',
-        'calidad',
-        'vigencia',
-        'fecha_finv'
+        'id', 'calidad',
+        'vigencia', 'fecha_finv'
     ];
 
     public $timestamps = false;

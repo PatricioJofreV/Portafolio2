@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ContactanosController;
-use App\Http\Controllers\InvertarioController;
+use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\VentaExController;
 use Illuminate\Support\Facades\Mail;
 
 /*
@@ -21,7 +24,10 @@ use Illuminate\Support\Facades\Mail;
 
 Route::get('/', HomeController::class)->name('home');
 Route::resource('usuarios', UsuarioController::class);
-Route::resource('inventarios', InvertarioController::class);
+Route::resource('roles', RolController::class);
+Route::resource('inventarios', InventarioController::class);
+Route::resource('productos', ProductoController::class);
+Route::resource('ventas_ex', VentaExController::class);
 Route::view('nosotros', 'nosotros')->name('nosotros');
 Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
 Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');

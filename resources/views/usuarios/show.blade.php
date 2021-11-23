@@ -1,10 +1,28 @@
 @extends('layouts.plantilla')
-@section('title','Perfil')
+@section('title', 'Perfil')
 @section('body')
-    <h1>Página Usuario <?php echo $usuario->nombre; ?></h1>
-    <p><strong>Correo:</strong> {{$usuario->correo}}</p>
-    <p><strong>Rol:</strong> {{$usuario->id_rol}}</p>
-    <p><strong>Verificado:</strong> {{$usuario->verificado}}</p>
-    <a href="{{ route('usuarios.index') }}">Volver a usuarios</a>
-    <a href="{{ route('usuarios.edit', $usuario) }}">Editar usuario</a>
+    <div class="list-group">
+        @foreach ($usuarios as $usuario)
+            <h1>Perfil de {{ $usuario->nombre }}</h1>
+            <div class="">
+                <div class="mb-3">
+                    Id: {{ $usuario->id }}
+                </div>
+                <div class="mb-3">
+                    Correo: {{ $usuario->correo }}
+                </div>
+                <div class="mb-3">
+                    Rol: {{ $usuario->nombre_rol }}
+                </div>
+                <div class="mb-3">
+                    Nombre: {{ $usuario->nombre }} {{ $usuario->apellido }}
+                </div>
+                <div class="mb-3">
+                    Rut: {{ $usuario->rut }}
+                </div>
+            </div>
+        @endforeach
+        <a href="{{ route('usuarios.index') }}">Volver a usuarios</a>
+    </div>
+
 @endsection

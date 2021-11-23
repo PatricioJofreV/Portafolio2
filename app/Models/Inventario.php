@@ -8,17 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Inventario extends Model
 {
     use HasFactory;
-
-    protected $table = 'INVENTARIO';
-
+    protected $table = 'INVENTARIOS';
     /**
      * The attributes that are mass assignable.
      * @var string[]
      */
     protected $fillable = [
-        'nombre',
-        'fruta'
+        'ID_USUARIO', 'FRUTA', 
+        'CANTIDAD', 'PRECIO'
     ];
-
     public $timestamps = false;
 }

@@ -3,19 +3,17 @@
 @section('title', 'Usuario')
 
 @section('body')
-
     <h1>Página Usuario</h1>
-    <a href="{{ route('usuarios.create') }}">crear usuario</a>
-    <ul>
+    <div class="mb-3">
+        <a type="button" href="{{ route('usuarios.create') }}">Crear usuarios</a>
+    </div>
+    <div class="list-group">
         @foreach ($usuarios as $usuario)
-            <ol>
-                <a href="{{ route('usuarios.show', $usuario->id) }}">
-                    {{ $usuario->id }}
-                    {{ $usuario->nombre }}
-                    {{ $usuario->correo }}
-                    {{ $usuario->id_rol }}
-                </a>
-            </ol>
+            <a type="button" class="list-group-item list-group-item-action"
+                href="{{ route('usuarios.show', $usuario->id) }}">
+                {{ $usuario->id }} {{ $usuario->nombre }} {{ $usuario->apellido }} {{ $usuario->correo }}
+                {{ $usuario->nombre_rol }} {{ $usuario->rut }}
+            </a>
         @endforeach
-    </ul>
+    </div>
 @endsection

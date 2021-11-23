@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Transportista extends Model
+class VentaEx extends Model
 {
     use HasFactory;
-    protected $table = 'TRANSPORTISTA';
-
+    protected $table = 'VENTAS_EX';
     /**
      * The attributes that are mass assignable.
      * @var string[]
      */
     protected $fillable = [
-        'id', 'patente', 'tipo_trans'
+        'ID_PROCESO', 'PAIS', 'ID_USUARIO',
+        'FECHA_INI', 'total_venta', 'estado'
     ];
-
     public $timestamps = false;
+
 }

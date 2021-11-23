@@ -3,18 +3,18 @@
 @section('title', 'inventario')
 
 @section('body')
-
-    <h1>Página inventario</h1>
-    <a href="{{ route('inventarios.create') }}">crear inventario</a>
-    <ul>
-        @foreach ($inventarios as $inventario)
-            <ol>
-                <a href="{{ route('inventarios.show', $inventario->id) }}">
-                    {{ $inventario->id }}
-                    {{ $inventario->nombre }}
-                    {{ $inventario->frutas }}
-                </a>
-            </ol>
-        @endforeach
-    </ul>
+    <h1>Página Inventario</h1>
+    <div class="mb-3">
+        <a type="button" href="{{ route('inventarios.create') }}">Crear inventario</a>
+    </div>
+    <div class="list-group">
+        <ul class="list-group">
+            @foreach ($inventarios as $inventario)
+                <li class="list-group-item" href="{{ route('inventarios.show', $inventario->id) }}">
+                    {{ $inventario->id }} {{ $inventario->fruta }} {{ $inventario->cantidad }}
+                    {{ $inventario->precio }}
+                </li>
+            @endforeach
+        </ul>
+    </div>
 @endsection
